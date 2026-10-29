@@ -70,20 +70,20 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
   };
 
   return (
-    <section id="interactive-lab" className="py-16 lg:py-24 bg-white border-b border-slate-200">
+    <section id="interactive-lab" className="py-16 lg:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 mb-2">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-2">
               <span>Applied Methodology Demonstrator</span>
               <span aria-hidden="true">·</span>
               <span>Interactive Framework</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 text-balance">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white text-balance">
               Enterprise Audit & AI Analysis Workbench
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               Explore how I bridge digital accessibility compliance governance and AI-assisted requirements engineering in mission-critical environments.
             </p>
           </div>
@@ -92,27 +92,27 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
             <button
               type="button"
               onClick={onOpenAuditChecklist}
-              className="px-4 py-2.5 bg-blue-50 border border-blue-200 hover:bg-blue-100/80 text-blue-800 rounded-xl text-xs font-semibold flex items-center gap-2 transition-colors shrink-0 shadow-2xs"
+              className="px-4 py-2.5 bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 hover:bg-blue-100/80 dark:hover:bg-blue-900/60 text-blue-800 dark:text-blue-300 rounded-xl text-xs font-semibold flex items-center gap-2 transition-colors shrink-0 shadow-2xs"
             >
-              <ShieldCheck className="w-4 h-4 text-blue-600" />
+              <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>Open 7-Domain Audit Checklist</span>
             </button>
           )}
         </div>
 
         {/* Workbench Mode Selector */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 p-1.5 bg-slate-100 rounded-xl border border-slate-200">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 p-1.5 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
           <div className="flex items-center gap-1 w-full sm:w-auto">
             <button
               type="button"
               onClick={() => setActiveTab('a11y-audit')}
               className={`flex-1 sm:flex-initial px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
                 activeTab === 'a11y-audit'
-                  ? 'bg-white text-blue-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <ShieldCheck className="w-4 h-4 text-blue-600" aria-hidden="true" />
+              <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
               <span>Section 508 & WCAG Audit Simulator</span>
             </button>
             <button
@@ -120,16 +120,16 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
               onClick={() => setActiveTab('ai-ba')}
               className={`flex-1 sm:flex-initial px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
                 activeTab === 'ai-ba'
-                  ? 'bg-white text-blue-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Brain className="w-4 h-4 text-indigo-600" aria-hidden="true" />
+              <Brain className="w-4 h-4 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
               <span>AI-Assisted Requirements Workbench</span>
             </button>
           </div>
 
-          <div className="text-xs text-slate-500 font-medium px-3 hidden md:block">
+          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium px-3 hidden md:block">
             {activeTab === 'a11y-audit'
               ? 'Evaluating enterprise web standards'
               : 'Synthesizing stakeholder input into Gherkin user stories'}
@@ -141,7 +141,7 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Test Selector */}
             <div className="lg:col-span-4 space-y-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">
                 Select Compliance Criterion
               </h3>
               {SECTION_508_SIMULATOR_TESTS.map((test) => (
@@ -154,13 +154,13 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
                   }}
                   className={`w-full text-left p-4 rounded-xl border transition-all ${
                     selectedAuditTest.id === test.id
-                      ? 'bg-blue-50/70 border-blue-400 shadow-xs'
-                      : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                      ? 'bg-blue-50/70 dark:bg-blue-950/60 border-blue-400 dark:border-blue-500 shadow-xs'
+                      : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60'
                   }`}
                 >
-                  <div className="text-xs font-semibold text-slate-900 mb-1">{test.title}</div>
-                  <div className="text-[11px] font-mono text-blue-700 mb-1">{test.wcagCriterion}</div>
-                  <div className="text-[11px] text-slate-500 leading-snug line-clamp-2">
+                  <div className="text-xs font-semibold text-slate-900 dark:text-white mb-1">{test.title}</div>
+                  <div className="text-[11px] font-mono text-blue-700 dark:text-blue-400 mb-1">{test.wcagCriterion}</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug line-clamp-2">
                     {test.description}
                   </div>
                 </button>
@@ -366,7 +366,7 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
             {/* Left Column: Stakeholder Input / Scenario Selection */}
             <div className="lg:col-span-5 space-y-4">
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                   Sample Enterprise Stakeholder Briefs
                 </h3>
                 <div className="space-y-2">
@@ -377,12 +377,12 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
                       onClick={() => handleSelectTemplate(tmpl)}
                       className={`w-full text-left p-3.5 rounded-xl border transition-all ${
                         selectedPromptTemplate.id === tmpl.id
-                          ? 'bg-blue-50/70 border-blue-500 shadow-2xs'
-                          : 'bg-white border-slate-200 hover:border-slate-300'
+                          ? 'bg-blue-50/70 dark:bg-blue-950/60 border-blue-500 shadow-2xs'
+                          : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                       }`}
                     >
-                      <div className="text-xs font-bold text-slate-900">{tmpl.title}</div>
-                      <div className="text-[11px] text-blue-700 font-medium">{tmpl.domain}</div>
+                      <div className="text-xs font-bold text-slate-900 dark:text-white">{tmpl.title}</div>
+                      <div className="text-[11px] text-blue-700 dark:text-blue-400 font-medium">{tmpl.domain}</div>
                     </button>
                   ))}
                 </div>
@@ -390,24 +390,24 @@ export const InteractiveWorkbench: React.FC<InteractiveWorkbenchProps> = ({
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label htmlFor="stakeholder-brief-input" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <label htmlFor="stakeholder-brief-input" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                     Raw Stakeholder Meeting Notes / Discovery Brief:
                   </label>
-                  <span className="text-[11px] text-slate-500 font-mono">Input</span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Input</span>
                 </div>
                 <textarea
                   id="stakeholder-brief-input"
                   value={customBrief}
                   onChange={(e) => setCustomBrief(e.target.value)}
                   rows={6}
-                  className="w-full p-3.5 rounded-xl border border-slate-300 text-xs text-slate-800 font-sans focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50 leading-relaxed"
+                  className="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 font-sans focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50 dark:bg-slate-950 leading-relaxed"
                 />
               </div>
 
               <button
                 type="button"
                 onClick={handleRunAiSynthesis}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-xs"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-xs"
               >
                 <FileCheck className="w-4 h-4 text-blue-400" aria-hidden="true" />
                 <span>Synthesize Requirements & Acceptance Criteria</span>

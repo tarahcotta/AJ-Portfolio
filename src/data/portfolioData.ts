@@ -114,13 +114,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         title: 'ADS Concept Model & Domain Architecture',
         subtitle: 'High-Level Information Architecture & Entity Relationships',
         description: 'My conceptual architecture framework illustrating how employee inputs—outside activities, financial interests, and institutional relationships—feed into the centralized Activities & Disclosures System (ADS) to produce tailored, legally binding Mitigation Plans.',
-        imageUrl: '/public/assets/aistudio/Concept_Map_ADS_fc0f040d.png',
+        imageUrl: '/assets/aistudio/Concept_Map_ADS_fc0f040d.png',
       },
       {
         title: 'ADS Future-State Process Architecture & Review Sub-Processes',
         subtitle: 'End-to-End BPMN Workflow, Decision Trees & Multi-Role Reviewers',
         description: 'My future-state process architecture for outside activities not involving licensing of NLR-owned IP. I mapped form field requirements, role determination logic, and discrete review sub-processes across Line Managers, Senior Managers, General Counsel (OGC), and Tech Transfer (LTM).',
-        imageUrl: '/public/assets/aistudio/Process_Map_-_Future_State_ADS_eca830e1.png',
+        imageUrl: '/assets/aistudio/Process_Map_-_Future_State_ADS_eca830e1.png',
       },
     ],
   },
@@ -159,7 +159,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         subtitle: 'Federal Asset Query Interface & Custody Tracking System',
         description:
           'The baseline NLR Property Search interface analyzed during discovery. Custodians and logistics managers query capital equipment, scientific instrumentation, and DOE tag numbers across South Table Mountain (STM), Flatirons (FC), and offsite locations to initiate custody transfers and audit reconciliations.',
-        imageUrl: '/public/assets/aistudio/Property_Search_b8525052.png',
+        imageUrl: '/assets/aistudio/Property_Search_b8525052.png',
       },
     ],
   },
@@ -198,7 +198,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         subtitle: 'Power Apps Enterprise Research Governance, DOE Crosscuts & Milestone Tracking',
         description:
           'The comprehensive AOP Project Plan interface engineered to govern federal research initiatives. It unifies project scope, DOE crosscuts, TRL modalities (Modalities 1–9), deliverable schedules, milestone dependencies, and multi-directorate budget allocations within a standardized governance system.',
-        imageUrl: '/public/assets/aistudio/Program_Management_473f745c.png',
+        imageUrl: '/assets/aistudio/Program_Management_473f745c.png',
       },
     ],
   },
@@ -267,7 +267,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         subtitle: 'Enterprise Learning Management System (LMS) & Training Transcript Platform',
         description:
           'The enterprise Cornerstone OnDemand Institutional Training portal at the National Laboratory of the Rockies. Features mandatory compliance training workflows, transcript management, accessibility notices, and training catalog search for lab personnel.',
-        imageUrl: '/public/assets/aistudio/training_0ac977fb.png',
+        imageUrl: '/assets/aistudio/training_0ac977fb.png',
       },
     ],
   },
@@ -374,6 +374,8 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     summary:
       'I lead enterprise IT accessibility and Section 508 governance while directing business analysis across research and enterprise systems.',
     highlights: [
+      'I led end-to-end business analysis for a custom Conflict of Interest (COI) disclosure platform, translating regulatory policies into functional specifications.',
+      'I served as a core BA for the full-SDLC rollout and campus-wide migration to a modernized Learning Management System (LMS) serving 5,000+ users.',
       'I serve as Product Owner for our enterprise accessibility scanning platform, monitoring and benchmarking laboratory web domains for WCAG 2.2 AA and Section 508 compliance.',
       'I manage stakeholder requirements, vendor roadmaps, and continuous scanning operations for our digital accessibility tools.',
       'I help software teams interpret scan diagnostics, converting raw accessibility issues into prioritized user stories with clear remediation steps.',
@@ -404,8 +406,6 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     summary:
       'I progressed through consecutive promotions to lead business analysis for enterprise software rollouts and custom application development across the university research ecosystem.',
     highlights: [
-      'I led end-to-end business analysis for a custom Conflict of Interest (COI) disclosure platform, translating regulatory policies into functional specifications.',
-      'I served as a core BA for the full-SDLC rollout and campus-wide migration to a modernized Learning Management System (LMS) serving 50,000+ users.',
       'I transformed complex administrative processes into functional requirements, user stories, Gherkin criteria, and BPMN workflow diagrams.',
       'I planned and led user acceptance testing (UAT), stakeholder validation workshops, and defect triage across academic and administrative departments.',
       'I served as a strategic liaison connecting university faculty, executive leadership, and technology vendors to ensure on-time system cutovers.',

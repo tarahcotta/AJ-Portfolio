@@ -43,14 +43,26 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 text-center sm:text-left">
             <span>© {new Date().getFullYear()} {PERSONAL_INFO.name}. Designed with WCAG 2.2 AA & Section 508 principles.</span>
+            <span aria-hidden="true" className="hidden sm:inline text-slate-700">·</span>
+            <span>
+              Made by{' '}
+              <a
+                href="https://www.tarahcotta.studio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-white underline decoration-slate-600 hover:decoration-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm"
+              >
+                Tarah Cotta
+              </a>
+            </span>
           </div>
 
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors p-1"
+            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm"
             aria-label="Back to top of page"
           >
             <span>Back to top</span>

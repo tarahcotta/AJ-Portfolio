@@ -120,7 +120,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
     >
       <div
         ref={containerRef}
-        className="relative w-full max-w-5xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-[94vh] h-[92vh] flex flex-col"
+        className="relative w-full max-w-5xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[94vh] h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -204,7 +204,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
         {viewMode === 'checklist' ? (
           <>
             {/* Filter bar & Search */}
-            <div className="px-5 py-3 bg-slate-100 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3 shrink-0">
+            <div className="px-5 py-3 bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3 shrink-0">
               {/* Category Tabs */}
               <div className="flex items-center gap-1 overflow-x-auto py-1 scrollbar-none text-xs">
                 {categories.map((cat) => (
@@ -214,8 +214,8 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-3 py-1.5 rounded-lg font-semibold transition-all whitespace-nowrap shrink-0 ${
                       selectedCategory === cat
-                        ? 'bg-slate-900 text-white shadow-xs'
-                        : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                        ? 'bg-slate-900 dark:bg-blue-600 text-white shadow-xs'
+                        : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700'
                     }`}
                   >
                     {cat}
@@ -231,15 +231,15 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter checklist items..."
-                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 placeholder:text-slate-400"
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white placeholder:text-slate-400"
                 />
               </div>
             </div>
 
             {/* Checklist Content Body */}
-            <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 bg-slate-50/50">
+            <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 bg-slate-50/50 dark:bg-slate-950/40">
               {filteredItems.length === 0 ? (
-                <div className="p-12 text-center text-slate-500 bg-white rounded-xl border border-slate-200">
+                <div className="p-12 text-center text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
                   <AlertCircle className="w-8 h-8 text-slate-400 mx-auto mb-2" />
                   <p className="text-sm font-semibold">No audit items match your filter criteria.</p>
                   <button
@@ -248,7 +248,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                       setSelectedCategory('All');
                       setSearchQuery('');
                     }}
-                    className="mt-3 text-xs text-blue-600 hover:underline"
+                    className="mt-3 text-xs text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     Reset filters
                   </button>
@@ -260,10 +260,10 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                   return (
                     <div
                       key={item.id}
-                      className={`bg-white rounded-xl border transition-all p-4 sm:p-5 ${
+                      className={`bg-white dark:bg-slate-900 rounded-xl border transition-all p-4 sm:p-5 ${
                         isChecked
-                          ? 'border-slate-200 shadow-2xs'
-                          : 'border-amber-300/80 bg-amber-50/20'
+                          ? 'border-slate-200 dark:border-slate-800 shadow-2xs'
+                          : 'border-amber-300/80 dark:border-amber-600/80 bg-amber-50/20 dark:bg-amber-950/20'
                       }`}
                     >
                       <div className="flex items-start gap-3.5">
@@ -276,7 +276,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                           className={`w-5 h-5 rounded mt-0.5 flex items-center justify-center transition-colors shrink-0 ${
                             isChecked
                               ? 'bg-blue-600 text-white'
-                              : 'border-2 border-slate-300 bg-white hover:border-blue-500'
+                              : 'border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 hover:border-blue-500'
                           }`}
                           aria-label={`Mark ${item.title} as ${isChecked ? 'unverified' : 'verified'}`}
                         >
@@ -285,14 +285,14 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
 
                         <div className="flex-1 min-w-0">
                           {/* Subcategory & Level tag */}
-                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-1">
-                            <span className="font-semibold text-blue-700">{item.category}</span>
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+                            <span className="font-semibold text-blue-700 dark:text-blue-400">{item.category}</span>
                             <span aria-hidden="true">·</span>
                             <span>{item.subCategory}</span>
                             {item.level && (
                               <>
                                 <span aria-hidden="true">·</span>
-                                <span className="font-mono text-slate-700 font-semibold">
+                                <span className="font-mono text-slate-700 dark:text-slate-300 font-semibold">
                                   Level {item.level}
                                 </span>
                               </>
@@ -300,7 +300,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                             {item.wcagRef && (
                               <>
                                 <span aria-hidden="true">·</span>
-                                <span className="font-mono text-[11px] text-slate-400">
+                                <span className="font-mono text-[11px] text-slate-400 dark:text-slate-500">
                                   {item.wcagRef}
                                 </span>
                               </>
@@ -308,27 +308,27 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                           </div>
 
                           {/* Title */}
-                          <h3 className="text-base font-bold text-slate-900 mb-1.5 flex items-center gap-2">
+                          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
                             <span>{item.title}</span>
                           </h3>
 
                           {/* Requirement */}
-                          <p className="text-xs sm:text-sm text-slate-700 mb-3 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mb-3 leading-relaxed">
                             {item.requirement}
                           </p>
 
                           {/* Verification Steps */}
-                          <div className="mb-3 p-3 rounded-lg bg-slate-50 border border-slate-200/80">
-                            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                          <div className="mb-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800">
+                            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
                               How to Verify & Test:
                             </div>
                             <ul className="space-y-1">
                               {item.verificationSteps.map((step, sIdx) => (
                                 <li
                                   key={sIdx}
-                                  className="text-xs text-slate-600 flex items-start gap-2"
+                                  className="text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2"
                                 >
-                                  <span className="text-slate-400 font-mono text-[10px] mt-0.5">
+                                  <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] mt-0.5">
                                     0{sIdx + 1}.
                                   </span>
                                   <span>{step}</span>
@@ -338,12 +338,12 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
                           </div>
 
                           {/* Portfolio Implementation Proof */}
-                          <div className="p-3 rounded-lg bg-blue-50/70 border border-blue-200/80 text-xs text-slate-800">
-                            <div className="text-[11px] font-bold uppercase tracking-wider text-blue-900 mb-1 flex items-center gap-1">
-                              <FileCheck className="w-3.5 h-3.5 text-blue-700" />
+                          <div className="p-3 rounded-lg bg-blue-50/70 dark:bg-blue-950/50 border border-blue-200/80 dark:border-blue-800/70 text-xs text-slate-800 dark:text-slate-200">
+                            <div className="text-[11px] font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1 flex items-center gap-1">
+                              <FileCheck className="w-3.5 h-3.5 text-blue-700 dark:text-blue-400" />
                               <span>This Portfolio's Implementation:</span>
                             </div>
-                            <p className="leading-relaxed font-sans text-slate-700">
+                            <p className="leading-relaxed font-sans text-slate-700 dark:text-slate-300">
                               {item.portfolioImplementation}
                             </p>
                           </div>
@@ -357,79 +357,79 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
           </>
         ) : (
           /* VPAT / ACR View */
-          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 bg-white">
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <h3 className="text-sm font-bold text-slate-900 mb-1">
+          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 bg-white dark:bg-slate-900">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
                 Section 508 Accessibility Conformance Report (VPAT® Version 2.4)
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 <strong>Scope:</strong> Anthony Antonidis-Drennan Web Application Portfolio · <strong>Standard:</strong> WCAG 2.2 Level AA & Revised Section 508 Chapter 5 (Software/Web). Evaluated using automated linters (axe-core), screen readers (macOS VoiceOver, NVDA), and manual keyboard inspection.
               </p>
             </div>
 
-            <div className="overflow-x-auto border border-slate-200 rounded-xl">
+            <div className="overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-xl">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold">
+                  <tr className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold">
                     <th className="p-3">Standard Criterion</th>
                     <th className="p-3 whitespace-nowrap">Conformance Level</th>
                     <th className="p-3">Remarks and Explanations</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-200 text-slate-700">
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">1.1.1 Non-text Content (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">1.1.1 Non-text Content (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">All non-decorative SVGs and controls provide programmatic names; decorative icons marked aria-hidden.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">1.3.1 Info and Relationships (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">1.3.1 Info and Relationships (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Semantic landmarks (header, nav, main, aside, section, footer), form labels bound via htmlFor/id.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">1.4.1 Use of Color (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">1.4.1 Use of Color (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Color is never the sole indicator; accompanied by icons, text labels, and border weight changes.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">1.4.3 Contrast (Minimum) (AA)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">1.4.3 Contrast (Minimum) (AA)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Text-to-background contrast exceeds 4.5:1 (normal) and 3:1 (large text and UI components).</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">1.4.10 Reflow (AA)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">1.4.10 Reflow (AA)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Responsive layout reflows down to 320px width without two-dimensional horizontal scrolling.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">2.1.1 Keyboard Navigation (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">2.1.1 Keyboard Navigation (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">All interactive functions are operable using standard keyboard without mouse dependency.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">2.1.2 No Keyboard Trap (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">2.1.2 No Keyboard Trap (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Focus is trapped inside open modals and dismissed via Escape key with focus returned to trigger.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">2.4.1 Bypass Blocks (A)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">2.4.1 Bypass Blocks (A)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Skip to main content mechanism provided at the beginning of the tab order.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">2.4.7 Focus Visible (AA)</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">2.4.7 Focus Visible (AA)</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Clear focus indicators provided; enhanced 3px high-contrast focus setting available in toolbar.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">502 Interoperability with Assistive Tech</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">502 Interoperability with Assistive Tech</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Standard HTML5 controls, ARIA dialog roles, live announcer status regions.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-slate-900">602 Support Documentation & Formats</td>
-                    <td className="p-3 text-emerald-700 font-bold">Supports</td>
+                    <td className="p-3 font-semibold text-slate-900 dark:text-white">602 Support Documentation & Formats</td>
+                    <td className="p-3 text-emerald-700 dark:text-emerald-400 font-bold">Supports</td>
                     <td className="p-3">Full interactive compliance checklist, downloadable PDF resumes, direct email/phone communication.</td>
                   </tr>
                 </tbody>
@@ -439,24 +439,24 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
         )}
 
         {/* Footer */}
-        <div className="p-4 bg-white border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-          <div className="text-xs text-slate-500">
-            Showing <span className="font-semibold text-slate-900">{filteredItems.length}</span> of {totalCount} total audit criteria.
+        <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+          <div className="text-xs text-slate-500 dark:text-slate-400">
+            Showing <span className="font-semibold text-slate-900 dark:text-white">{filteredItems.length}</span> of {totalCount} total audit criteria.
           </div>
 
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={handleCopyReport}
-              className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors flex items-center gap-1.5"
             >
-              {copiedReport ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedReport ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               <span>Copy Full Audit Checklist</span>
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors"
+              className="px-4 py-2 text-xs font-semibold text-white bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500 rounded-lg transition-colors"
             >
               Close Checklist
             </button>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight, CheckCircle2, ChevronDown, ChevronUp, Eye, FileCode2, Layers, Network, ShieldCheck } from 'lucide-react';
 import { CASE_STUDIES, CaseStudy } from '../data/portfolioData';
 import { useLiveAnnouncer } from './LiveAnnouncer';
+import { getAssetUrl } from '../utils/assetUrl';
 
 interface CaseStudiesSectionProps {
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
@@ -65,20 +66,20 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
   };
 
   return (
-    <section id="case-studies" className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
+    <section id="case-studies" className="py-16 lg:py-24 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 mb-2">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-2">
               <span>Featured Initiatives</span>
               <span aria-hidden="true">·</span>
               <span>Proven Enterprise Track Record</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 text-balance">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white text-balance">
               Strategic Case Studies & Enterprise Leadership
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
               In-depth deep dives into the custom enterprise systems, federal regulatory compliance platforms, and digital accessibility initiatives I've led.
             </p>
           </div>
@@ -88,7 +89,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
             <div
               role="tablist"
               aria-label="Filter case studies by domain"
-              className="flex items-center gap-1 p-1 bg-slate-200/80 rounded-xl border border-slate-300/70"
+              className="flex items-center gap-1 p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl border border-slate-300/70 dark:border-slate-700"
             >
               <button
                 type="button"
@@ -97,8 +98,8 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                 onClick={() => handleFilterChange('all')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap ${
                   filter === 'all'
-                    ? 'bg-white text-slate-900 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 All ({CASE_STUDIES.length})
@@ -110,8 +111,8 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                 onClick={() => handleFilterChange('accessibility')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap ${
                   filter === 'accessibility'
-                    ? 'bg-white text-blue-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Accessibility & 508 ({a11yCount})
@@ -123,15 +124,15 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                 onClick={() => handleFilterChange('ba')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap ${
                   filter === 'ba'
-                    ? 'bg-white text-blue-700 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Enterprise BA & AI ({baCount})
               </button>
             </div>
 
-            <div className="text-xs text-slate-500 font-mono bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-xs">
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-mono bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-xs">
               Showing {displayedCaseStudies.length} of {matchingStudies.length}
             </div>
           </div>
@@ -143,10 +144,10 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
             const hasDiagrams = cs.diagrams && cs.diagrams.length > 0;
             const trackBadge =
               cs.track === 'accessibility'
-                ? { label: 'Section 508 & Accessibility', badgeClass: 'bg-blue-50 text-blue-700 border-blue-200/80' }
+                ? { label: 'Section 508 & Accessibility', badgeClass: 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200/80 dark:border-blue-800/80' }
                 : cs.track === 'ba'
-                ? { label: 'Enterprise BA & Architecture', badgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200/80' }
-                : { label: 'Accessibility + Enterprise BA', badgeClass: 'bg-teal-50 text-teal-800 border-teal-200/80' };
+                ? { label: 'Enterprise BA & Architecture', badgeClass: 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border-indigo-200/80 dark:border-indigo-800/80' }
+                : { label: 'Accessibility + Enterprise BA', badgeClass: 'bg-teal-50 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 border-teal-200/80 dark:border-teal-800/80' };
 
             const architecturalMetrics: Record<string, { highlight: string; metric: string; tag: string }> = {
               'enterprise-accessibility-scanning': {
@@ -176,24 +177,35 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
             return (
               <article
                 key={cs.id}
-                className="bg-white rounded-2xl border border-slate-200/90 hover:border-blue-400 hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden group"
+                className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden group"
               >
                 {/* Top Visual Showcase / Artifact Frame (Uniform h-48 across all cards) */}
-                <div className="h-48 w-full bg-slate-100/60 border-b border-slate-200 p-3 relative overflow-hidden flex flex-col justify-center">
+                <div className="h-48 w-full bg-slate-100/60 dark:bg-slate-800/40 border-b border-slate-200 dark:border-slate-800 p-3 relative overflow-hidden flex flex-col justify-center">
                   {hasDiagrams ? (
                     cs.diagrams!.length === 1 ? (
                       /* Single Artifact Edge Preview */
                       <button
                         type="button"
                         onClick={() => onSelectCaseStudy(cs)}
-                        className="relative w-full h-full rounded-xl overflow-hidden bg-white border border-slate-200 shadow-2xs group-hover:border-blue-500 transition-colors text-left focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                        className="relative w-full h-full rounded-xl overflow-hidden bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs group-hover:border-blue-500 transition-colors text-left focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                         title={`Inspect artifact: ${cs.diagrams![0].title}`}
                       >
                         <img
-                          src={cs.diagrams![0].imageUrl}
+                          src={getAssetUrl(cs.diagrams![0].imageUrl)}
                           alt={cs.diagrams![0].title}
                           className="w-full h-full object-contain p-2.5"
                           loading="lazy"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            const original = cs.diagrams![0].imageUrl;
+                            if (!target.dataset.fallbackTried) {
+                              target.dataset.fallbackTried = '1';
+                              target.src = original.startsWith('/') ? original : `/${original}`;
+                            } else if (target.dataset.fallbackTried === '1') {
+                              target.dataset.fallbackTried = '2';
+                              target.src = `/public/${original.replace(/^\/+/, '')}`;
+                            }
+                          }}
                         />
                         <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900/90 backdrop-blur-xs text-[10px] font-semibold text-white tracking-wide shadow-xs">
                           <Network className="w-3 h-3 text-blue-400" aria-hidden="true" />
@@ -212,14 +224,25 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                             key={dIdx}
                             type="button"
                             onClick={() => onSelectCaseStudy(cs)}
-                            className="relative w-full h-full rounded-xl overflow-hidden bg-white border border-slate-200 shadow-2xs group-hover:border-blue-500 transition-colors text-left focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                            className="relative w-full h-full rounded-xl overflow-hidden bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xs group-hover:border-blue-500 transition-colors text-left focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                             title={`Inspect: ${diag.title}`}
                           >
                             <img
-                              src={diag.imageUrl}
+                              src={getAssetUrl(diag.imageUrl)}
                               alt={diag.title}
                               className="w-full h-full object-contain p-2"
                               loading="lazy"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                const original = diag.imageUrl;
+                                if (!target.dataset.fallbackTried) {
+                                  target.dataset.fallbackTried = '1';
+                                  target.src = original.startsWith('/') ? original : `/${original}`;
+                                } else if (target.dataset.fallbackTried === '1') {
+                                  target.dataset.fallbackTried = '2';
+                                  target.src = `/public/${original.replace(/^\/+/, '')}`;
+                                }
+                              }}
                             />
                             <div className="absolute bottom-1.5 inset-x-1.5 px-1.5 py-0.5 rounded bg-slate-900/90 backdrop-blur-xs text-[9px] font-semibold text-white truncate shadow-xs text-center">
                               {diag.title}
@@ -233,31 +256,31 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                     <button
                       type="button"
                       onClick={() => onSelectCaseStudy(cs)}
-                      className="w-full h-full rounded-xl border border-slate-200 bg-slate-50/90 hover:bg-slate-100/70 p-4 flex flex-col justify-between text-left group-hover:border-blue-400 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                      className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-800/60 hover:bg-slate-100/70 dark:hover:bg-slate-800/90 p-4 flex flex-col justify-between text-left group-hover:border-blue-400 dark:group-hover:border-blue-500 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                       title={`Read ${cs.title} details`}
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-blue-800 bg-blue-100 px-2 py-0.5 rounded border border-blue-200">
+                        <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-blue-800 dark:text-blue-300 bg-blue-100 dark:bg-blue-950/80 px-2 py-0.5 rounded border border-blue-200 dark:border-blue-800">
                           {archMetric?.tag || cs.category}
                         </span>
-                        <span className="text-[11px] font-mono text-slate-600 font-semibold">
+                        <span className="text-[11px] font-mono text-slate-600 dark:text-slate-400 font-semibold">
                           {cs.period}
                         </span>
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-slate-950 line-clamp-1 mb-1 group-hover:text-blue-700 transition-colors">
+                        <div className="text-xs font-bold text-slate-950 dark:text-white line-clamp-1 mb-1 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                           {archMetric?.highlight || cs.role}
                         </div>
-                        <div className="text-[11px] text-slate-700 font-medium line-clamp-2">
+                        <div className="text-[11px] text-slate-700 dark:text-slate-300 font-medium line-clamp-2">
                           {archMetric?.metric || cs.organization}
                         </div>
                       </div>
-                      <div className="flex items-center justify-between text-[10px] text-slate-600 font-medium pt-1 border-t border-slate-200">
-                        <span className="flex items-center gap-1 text-slate-800 font-semibold">
-                          <ShieldCheck className="w-3.5 h-3.5 text-blue-700 shrink-0" aria-hidden="true" />
+                      <div className="flex items-center justify-between text-[10px] text-slate-600 dark:text-slate-400 font-medium pt-1 border-t border-slate-200 dark:border-slate-800">
+                        <span className="flex items-center gap-1 text-slate-800 dark:text-slate-300 font-semibold">
+                          <ShieldCheck className="w-3.5 h-3.5 text-blue-700 dark:text-blue-400 shrink-0" aria-hidden="true" />
                           <span>Enterprise SDLC & Section 508</span>
                         </span>
-                        <span className="text-blue-800 font-semibold flex items-center gap-0.5">
+                        <span className="text-blue-800 dark:text-blue-400 font-semibold flex items-center gap-0.5">
                           View details <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                         </span>
                       </div>
@@ -272,60 +295,60 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
                     <span className={`px-2 py-0.5 text-[11px] font-semibold rounded-md border ${trackBadge.badgeClass}`}>
                       {trackBadge.label}
                     </span>
-                    <span className="text-xs font-semibold text-slate-600 truncate max-w-[200px]">
+                    <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 truncate max-w-[200px]">
                       {cs.organization}
                     </span>
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h3 className="text-xl font-bold tracking-tight text-slate-950 group-hover:text-blue-700 transition-colors mb-1.5 leading-snug line-clamp-2">
+                  <h3 className="text-xl font-bold tracking-tight text-slate-950 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors mb-1.5 leading-snug line-clamp-2">
                     <button
                       type="button"
                       onClick={() => onSelectCaseStudy(cs)}
-                      className="text-left hover:underline focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2 rounded-xs"
+                      className="text-left hover:underline focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-xs"
                     >
                       {cs.title}
                     </button>
                   </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-600 mb-4 line-clamp-1">
+                  <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 mb-4 line-clamp-1">
                     {cs.subtitle}
                   </p>
 
                   {/* Narrative Summary */}
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-5 line-clamp-3">
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-5 line-clamp-3">
                     {cs.summary}
                   </p>
 
                   {/* Highlight Outcomes (Structured scannable list) */}
-                  <div className="space-y-2.5 mb-6 pt-4 border-t border-slate-100">
-                    <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
+                  <div className="space-y-2.5 mb-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                       Key Quantifiable Outcomes
                     </div>
                     {cs.keyOutcomes.slice(0, 3).map((outcome, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-700 shrink-0 mt-0.5" aria-hidden="true" />
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-700 dark:text-blue-400 shrink-0 mt-0.5" aria-hidden="true" />
                         <span className="leading-snug">{outcome}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Aligned Sticky Footer */}
-                  <div className="mt-auto pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-slate-700">
+                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-slate-700 dark:text-slate-300">
                       {cs.technologies.slice(0, 2).map((tech, idx) => (
-                        <span key={idx} className="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-slate-800 font-medium">
+                        <span key={idx} className="px-2 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-800 dark:text-slate-300 font-medium">
                           {tech}
                         </span>
                       ))}
                       {cs.technologies.length > 2 && (
-                        <span className="text-slate-500 font-medium text-[11px]">+{cs.technologies.length - 2}</span>
+                        <span className="text-slate-500 dark:text-slate-400 font-medium text-[11px]">+{cs.technologies.length - 2}</span>
                       )}
                     </div>
 
                     <button
                       type="button"
                       onClick={() => onSelectCaseStudy(cs)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-800 hover:bg-blue-700 hover:text-white text-xs font-semibold transition-all group/btn shadow-2xs focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 hover:bg-blue-700 dark:hover:bg-blue-600 hover:text-white text-xs font-semibold transition-all group/btn shadow-2xs focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                     >
                       <span>{hasDiagrams ? 'Explore System & Maps' : 'Deep Dive & Outcomes'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
@@ -343,22 +366,22 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
             type="button"
             onClick={handleToggleExpand}
             aria-expanded={isExpanded}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-slate-300 hover:border-slate-400 hover:bg-slate-100/70 text-sm font-semibold text-slate-800 shadow-xs hover:shadow-sm transition-all focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100/70 dark:hover:bg-slate-800 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-xs hover:shadow-sm transition-all focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
           >
             {isExpanded ? (
               <>
-                <ChevronUp className="w-4 h-4 text-blue-700" aria-hidden="true" />
+                <ChevronUp className="w-4 h-4 text-blue-700 dark:text-blue-400" aria-hidden="true" />
                 <span>Show Fewer Initiatives (Return to 3 Main Case Studies)</span>
               </>
             ) : (
               <>
-                <ChevronDown className="w-4 h-4 text-blue-700" aria-hidden="true" />
+                <ChevronDown className="w-4 h-4 text-blue-700 dark:text-blue-400" aria-hidden="true" />
                 <span>View More Initiatives ({matchingStudies.length - displayedCaseStudies.length > 0 ? `${matchingStudies.length - displayedCaseStudies.length} Additional Initiatives` : `All ${matchingStudies.length} Initiatives`})</span>
               </>
             )}
           </button>
           {!isExpanded && (
-            <p className="mt-2 text-xs text-slate-500">
+            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
               Explore additional initiatives including Enterprise Accessibility Scanning Platform, LMS Rollout, Figma Governance, ERG Leadership, and AI Requirements.
             </p>
           )}

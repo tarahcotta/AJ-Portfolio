@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, Type, RotateCcw, X, Check, Sparkles } from 'lucide-react';
+import { Eye, Type, RotateCcw, X, Check, Sun, Moon } from 'lucide-react';
 
 export interface A11ySettings {
   fontSize: 'normal' | 'large' | 'xlarge';
@@ -17,6 +17,8 @@ interface AccessibilityToolbarProps {
   onClose: () => void;
   onOpenAuditChecklist: () => void;
   isOpen: boolean;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
 export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
@@ -26,6 +28,8 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
   onClose,
   onOpenAuditChecklist,
   isOpen,
+  theme,
+  onToggleTheme,
 }) => {
   if (!isOpen) return null;
 
@@ -43,13 +47,32 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
         </div>
 
         <div className="flex flex-wrap items-center gap-2 text-xs">
+          {/* Dark / Light Mode Toggle */}
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
+              theme === 'dark'
+                ? 'bg-amber-400 text-slate-950 border-amber-300 font-semibold'
+                : 'bg-slate-800 text-slate-200 border-slate-700 hover:bg-slate-700'
+            }`}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-3.5 h-3.5 text-slate-950" aria-hidden="true" />
+            ) : (
+              <Moon className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
+            )}
+            <span>{theme === 'dark' ? 'Dark Theme' : 'Light Theme'}</span>
+          </button>
+
           {/* Text Size Segmented Control */}
           <div className="flex items-center bg-slate-800 rounded-md p-0.5 border border-slate-700">
             <span className="px-2 text-slate-400 text-[11px] font-medium">Text:</span>
             <button
               type="button"
               onClick={() => onUpdateSettings((s) => ({ ...s, fontSize: 'normal' }))}
-              className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-2 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
                 settings.fontSize === 'normal'
                   ? 'bg-blue-600 text-white'
                   : 'text-slate-300 hover:text-white'
@@ -60,7 +83,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
             <button
               type="button"
               onClick={() => onUpdateSettings((s) => ({ ...s, fontSize: 'large' }))}
-              className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-2 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
                 settings.fontSize === 'large'
                   ? 'bg-blue-600 text-white'
                   : 'text-slate-300 hover:text-white'
@@ -71,7 +94,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
             <button
               type="button"
               onClick={() => onUpdateSettings((s) => ({ ...s, fontSize: 'xlarge' }))}
-              className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-2 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
                 settings.fontSize === 'xlarge'
                   ? 'bg-blue-600 text-white'
                   : 'text-slate-300 hover:text-white'
@@ -85,7 +108,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={() => onUpdateSettings((s) => ({ ...s, highContrast: !s.highContrast }))}
-            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
               settings.highContrast
                 ? 'bg-amber-400 text-slate-950 border-amber-300 font-semibold'
                 : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -99,7 +122,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={() => onUpdateSettings((s) => ({ ...s, dyslexicFont: !s.dyslexicFont }))}
-            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
               settings.dyslexicFont
                 ? 'bg-blue-500 text-white border-blue-400 font-semibold'
                 : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -113,7 +136,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={() => onUpdateSettings((s) => ({ ...s, enhancedFocus: !s.enhancedFocus }))}
-            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
               settings.enhancedFocus
                 ? 'bg-blue-500 text-white border-blue-400 font-semibold'
                 : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -127,7 +150,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={() => onUpdateSettings((s) => ({ ...s, underlineLinks: !s.underlineLinks }))}
-            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
               settings.underlineLinks
                 ? 'bg-blue-500 text-white border-blue-400 font-semibold'
                 : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -141,7 +164,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={() => onUpdateSettings((s) => ({ ...s, reducedMotion: !s.reducedMotion }))}
-            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-2.5 py-1.5 rounded-md border text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
               settings.reducedMotion
                 ? 'bg-blue-500 text-white border-blue-400 font-semibold'
                 : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
@@ -155,7 +178,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={onOpenAuditChecklist}
-            className="px-2.5 py-1.5 rounded-md bg-blue-600/90 hover:bg-blue-600 text-white border border-blue-500 text-xs font-semibold transition-colors flex items-center gap-1 shadow-2xs ml-1"
+            className="px-2.5 py-1.5 rounded-md bg-blue-600/90 hover:bg-blue-600 text-white border border-blue-500 text-xs font-semibold transition-colors flex items-center gap-1 shadow-2xs ml-1 cursor-pointer"
           >
             <span>Audit Checklist</span>
           </button>
@@ -164,7 +187,7 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={onReset}
-            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
             title="Reset to default settings"
             aria-label="Reset accessibility preferences"
           >
@@ -175,11 +198,11 @@ export const AccessibilityToolbar: React.FC<AccessibilityToolbarProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-1"
+            className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-1 cursor-pointer"
             title="Close accessibility toolbar"
             aria-label="Close toolbar"
           >
-            <X className="w-3.5 h-3.5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
       </div>

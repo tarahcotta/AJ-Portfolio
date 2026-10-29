@@ -104,21 +104,21 @@ export const SkillsMatrix: React.FC = () => {
     <section
       id="skills"
       aria-label="Specialized Skills and Capabilities"
-      className="py-16 lg:py-24 bg-white border-b border-slate-200"
+      className="py-16 lg:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 mb-2 font-mono">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-2 font-mono">
               <span>Unified Competency Framework</span>
               <span aria-hidden="true">·</span>
               <span>Technical & Strategic Capabilities</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 text-balance">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white text-balance">
               Specialized Skills & Applied Capabilities
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               My core capabilities unite federal Section 508 accessibility compliance, rigorous full-SDLC requirements modeling, and modern generative AI analysis workflows into one cohesive practice.
             </p>
           </div>
@@ -129,17 +129,17 @@ export const SkillsMatrix: React.FC = () => {
             <button
               type="button"
               onClick={handleToggleViewMode}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-medium text-slate-700 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
               aria-label={`Switch to ${viewMode === 'carousel' ? 'Grid View' : 'Carousel View'}`}
             >
               {viewMode === 'carousel' ? (
                 <>
-                  <LayoutGrid className="w-3.5 h-3.5 text-slate-500" aria-hidden="true" />
+                  <LayoutGrid className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" aria-hidden="true" />
                   <span>View All (Grid)</span>
                 </>
               ) : (
                 <>
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" aria-hidden="true" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                   <span>Sideways Carousel</span>
                 </>
               )}
@@ -150,12 +150,12 @@ export const SkillsMatrix: React.FC = () => {
               <div
                 role="group"
                 aria-label="Carousel navigation controls"
-                className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200"
+                className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700"
               >
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-white transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                  className="p-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                   aria-label="Previous skill category"
                   title="Previous skill category"
                 >
@@ -165,9 +165,9 @@ export const SkillsMatrix: React.FC = () => {
                 <div
                   aria-live="polite"
                   aria-atomic="true"
-                  className="px-2 text-xs font-mono font-medium text-slate-600 select-none"
+                  className="px-2 text-xs font-mono font-medium text-slate-600 dark:text-slate-400 select-none"
                 >
-                  <span className="text-slate-900 font-bold">{activeIndex + 1}</span>
+                  <span className="text-slate-900 dark:text-white font-bold">{activeIndex + 1}</span>
                   <span className="text-slate-400"> / </span>
                   <span>{SKILL_CATEGORIES.length}</span>
                 </div>
@@ -175,7 +175,7 @@ export const SkillsMatrix: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-white transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2"
+                  className="p-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
                   aria-label="Next skill category"
                   title="Next skill category"
                 >
@@ -207,13 +207,13 @@ export const SkillsMatrix: React.FC = () => {
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 border ${
                     isActive
                       ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
-                      : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
+                      : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <span>{cat.title.split('&')[0].trim()}</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                      isActive ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-700'
+                      isActive ? 'bg-blue-500 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
                     }`}
                   >
                     {cat.skills.length}
@@ -232,7 +232,7 @@ export const SkillsMatrix: React.FC = () => {
             aria-label="Specialized Skills Carousel"
             onKeyDown={handleKeyDown}
             tabIndex={0}
-            className="relative focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 focus-visible:outline-offset-2 rounded-2xl"
+            className="relative focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded-2xl"
           >
             {/* Scrollable Track */}
             <div
@@ -253,27 +253,27 @@ export const SkillsMatrix: React.FC = () => {
                   aria-labelledby={`skill-tab-${idx}`}
                   id={`skill-panel-${idx}`}
                   aria-label={`${idx + 1} of ${SKILL_CATEGORIES.length}: ${category.title}`}
-                  className="snap-start shrink-0 w-full sm:w-[88%] lg:w-[72%] bg-slate-50/80 rounded-2xl border border-slate-200 p-6 sm:p-8 flex flex-col justify-between shadow-xs transition-shadow hover:shadow-md"
+                  className="snap-start shrink-0 w-full sm:w-[88%] lg:w-[72%] bg-slate-50/80 dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex flex-col justify-between shadow-xs transition-shadow hover:shadow-md"
                 >
                   <div>
                     {/* Card Header */}
-                    <div className="pb-4 mb-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="pb-4 mb-5 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
-                        <div className="flex items-center gap-2 text-[11px] font-mono font-semibold uppercase text-blue-700 mb-1">
+                        <div className="flex items-center gap-2 text-[11px] font-mono font-semibold uppercase text-blue-700 dark:text-blue-400 mb-1">
                           <span>Domain #{idx + 1}</span>
                           <span aria-hidden="true">·</span>
                           <span>{category.skills.length} Core Competencies</span>
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900">
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                           {category.title}
                         </h3>
-                        <p className="text-xs text-slate-600 font-medium mt-1">
+                        <p className="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1">
                           {category.description}
                         </p>
                       </div>
 
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 text-xs font-mono shrink-0 self-start sm:self-auto">
-                        <Award className="w-3.5 h-3.5 text-blue-600" aria-hidden="true" />
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-mono shrink-0 self-start sm:self-auto">
+                        <Award className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                         <span>Audited Practice</span>
                       </div>
                     </div>
@@ -283,22 +283,22 @@ export const SkillsMatrix: React.FC = () => {
                       {category.skills.map((skill, sIdx) => (
                         <div
                           key={sIdx}
-                          className="p-3.5 rounded-xl bg-white border border-slate-200/90 flex flex-col justify-between gap-2 shadow-2xs hover:border-blue-300 transition-colors"
+                          className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 flex flex-col justify-between gap-2 shadow-2xs hover:border-blue-300 dark:hover:border-blue-500 transition-colors"
                         >
                           <div>
-                            <div className="text-xs font-bold text-slate-800 flex items-start justify-between gap-2">
+                            <div className="text-xs font-bold text-slate-800 dark:text-white flex items-start justify-between gap-2">
                               <span>{skill.name}</span>
                               <span
                                 className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded shrink-0 ${
                                   skill.level === 'Expert'
-                                    ? 'bg-blue-100 text-blue-800 border border-blue-200'
-                                    : 'bg-slate-100 text-slate-700 border border-slate-200'
+                                    ? 'bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
                                 }`}
                               >
                                 {skill.level}
                               </span>
                             </div>
-                            <div className="text-[11px] text-slate-600 font-medium mt-1 leading-snug">
+                            <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium mt-1 leading-snug">
                               {skill.context}
                             </div>
                           </div>
@@ -308,14 +308,14 @@ export const SkillsMatrix: React.FC = () => {
                   </div>
 
                   {/* Slide Footer */}
-                  <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-600 font-medium">
+                  <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 font-medium">
                     <span>
                       Showing {category.skills.length} competencies in {category.title.split('&')[0].trim()}
                     </span>
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:text-blue-900 cursor-pointer"
+                      className="inline-flex items-center gap-1 font-semibold text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 cursor-pointer"
                     >
                       <span>Next Category</span>
                       <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -326,7 +326,7 @@ export const SkillsMatrix: React.FC = () => {
             </div>
 
             {/* Accessible Keyboard & Gesture Hint */}
-            <div className="mt-2 flex items-center justify-between text-[11px] text-slate-600 font-medium">
+            <div className="mt-2 flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400 font-medium">
               <span className="hidden sm:inline">
                 Use Left / Right arrow keys, horizontal swipe, or category tabs to navigate
               </span>
@@ -342,14 +342,14 @@ export const SkillsMatrix: React.FC = () => {
             {SKILL_CATEGORIES.map((category, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50/70 rounded-2xl border border-slate-200 p-6 sm:p-7 flex flex-col justify-between"
+                className="bg-slate-50/70 dark:bg-slate-950/80 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-7 flex flex-col justify-between"
               >
                 <div>
-                  <div className="pb-4 mb-4 border-b border-slate-200">
-                    <h3 className="text-lg font-bold text-slate-900">
+                  <div className="pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                       {category.title}
                     </h3>
-                    <p className="text-xs text-slate-600 font-medium mt-1">
+                    <p className="text-xs text-slate-600 dark:text-slate-300 font-medium mt-1">
                       {category.description}
                     </p>
                   </div>
@@ -358,13 +358,13 @@ export const SkillsMatrix: React.FC = () => {
                     {category.skills.map((skill, sIdx) => (
                       <div
                         key={sIdx}
-                        className="p-3 rounded-xl bg-white border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs"
+                        className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-2xs"
                       >
                         <div>
-                          <div className="text-xs font-bold text-slate-800">
+                          <div className="text-xs font-bold text-slate-800 dark:text-white">
                             {skill.name}
                           </div>
-                          <div className="text-[11px] text-slate-600 font-medium">
+                          <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">
                             {skill.context}
                           </div>
                         </div>
@@ -373,8 +373,8 @@ export const SkillsMatrix: React.FC = () => {
                           <span
                             className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded ${
                               skill.level === 'Expert'
-                                ? 'bg-blue-100 text-blue-800 border border-blue-200'
-                                : 'bg-slate-100 text-slate-700 border border-slate-200'
+                                ? 'bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
                             }`}
                           >
                             {skill.level}

@@ -82,7 +82,7 @@ export const AccessibilityAuditModal: React.FC<AccessibilityAuditModalProps> = (
   };
 
   const generateMarkdownReport = () => {
-    let md = `# Anthony Antonidis-Drennan Portfolio — Accessibility Audit Report\n\n`;
+    let md = `# Anthony Antonidis-Drennan Portfolio: Accessibility Audit Report\n\n`;
     md += `**Date:** ${new Date().toISOString().split('T')[0]}\n`;
     md += `**Verified Score:** ${verifiedCount}/${totalCount} (${compliancePercentage}% Passed)\n`;
     md += `**Standard:** WCAG 2.2 Level AA & Section 508 (Chapter 5) Standards\n\n`;

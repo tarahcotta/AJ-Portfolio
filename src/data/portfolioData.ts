@@ -72,11 +72,11 @@ export const PERSONAL_INFO = {
   phone: '281-202-8245',
   linkedinUrl: 'https://linkedin.com/in/aantonidis',
   linkedinHandle: 'linkedin.com/in/aantonidis',
-  tagline: 'I bridge enterprise software delivery, Section 508 accessibility governance, and AI-accelerated business analysis.',
-  headline: 'IT Accessibility Leader & Senior Business Analyst',
-  subheadline: 'Section 508 Governance · Enterprise SDLC · AI-Enabled Requirements Engineering',
+  tagline: 'I eliminate accessibility debt and operational bottlenecks across federal research systems.',
+  headline: 'IT Accessibility Coordinator & Lead Business Analyst',
+  subheadline: 'Section 508 Governance · Federal SDLC · AI-Accelerated Requirements',
   overview:
-    'I lead enterprise IT accessibility and full-lifecycle business analysis across federal laboratories and research institutions. My work pairs Section 508/WCAG compliance with rigorous systems analysis—product-managing automated scanning across dozens of public web domains, architecting custom regulatory compliance workflows, and applying generative AI to streamline discovery and solution architecture.',
+    'Digital accessibility is not a post-launch checkbox; it is a baseline engineering constraint. At the National Laboratory of the Rockies (NREL), I direct Section 508 compliance across public web properties and internal research systems. As Product Owner for our automated scanning platform, I do not just hand developers raw violation logs; I translate WCAG 2.2 AA diagnostics into clear, prioritized Jira user stories with explicit remediation steps. Alongside governance, I lead full-SDLC requirements engineering for complex enterprise systems, from custom Conflict of Interest (COI) disclosure platforms to modern Learning Management Systems serving 5,000+ personnel, deploying structured AI workflows that cut discovery turnaround in half.',
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -90,7 +90,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     period: '2021 – Present',
     role: 'Lead IT Business Analyst & Process Architect',
     summary:
-      'I led end-to-end business analysis and BPMN workflow modeling for the Activities & Disclosures System (ADS)—an enterprise platform that manages outside activities, financial interests, and institutional mitigation plans across scientific and administrative teams.',
+      'I led end-to-end business analysis and BPMN workflow modeling for the Activities & Disclosures System (ADS), an enterprise platform that manages outside activities, financial interests, and institutional mitigation plans across scientific and administrative teams.',
     challenge:
       'Our researchers and administrators needed an auditable, automated way to disclose outside activities and financial interests without creating intellectual property risks or regulatory exposure. The legacy process relied on fragmented paperwork, created multi-week delays between managers and General Counsel, and lacked systematic mitigation plan generation.',
     solution:
@@ -113,7 +113,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         title: 'ADS Concept Model & Domain Architecture',
         subtitle: 'High-Level Information Architecture & Entity Relationships',
-        description: 'My conceptual architecture framework illustrating how employee inputs—outside activities, financial interests, and institutional relationships—feed into the centralized Activities & Disclosures System (ADS) to produce tailored, legally binding Mitigation Plans.',
+        description: 'My conceptual architecture framework illustrating how employee inputs (outside activities, financial interests, and institutional relationships) feed into the centralized Activities & Disclosures System (ADS) to produce tailored, legally binding Mitigation Plans.',
         imageUrl: '/assets/aistudio/Concept_Map_ADS_fc0f040d.png',
       },
       {
@@ -177,7 +177,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge:
       'Annual research planning across our clean energy, computing, and materials directorates was slowed down by disconnected spreadsheets and conflicting milestone definitions. Reconciling commitments between Principal Investigators, finance leads, and federal program sponsors took months of manual back-and-forth.',
     solution:
-      'I established a unified AOP process architecture and baseline requirements catalog. I mapped inter-directorate milestone dependencies and executive approval gates, then used AI-assisted analysis to surface milestone gaps and budget anomalies early—giving leadership and federal sponsors clear visibility into deliverable health.',
+      'I established a unified AOP process architecture and baseline requirements catalog. I mapped inter-directorate milestone dependencies and executive approval gates, then used AI-assisted analysis to surface milestone gaps and budget anomalies early, giving leadership and federal sponsors clear visibility into deliverable health.',
     keyOutcomes: [
       'Unified annual research planning across diverse scientific directorates into a single standardized platform',
       'Compressed annual research planning cycle by 4 weeks through automated milestone validation workflows',
@@ -194,7 +194,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     featured: true,
     diagrams: [
       {
-        title: 'NLR Program Management Site — Research Project Plan & AOP Modality Matrix',
+        title: 'NLR Program Management Site: Research Project Plan & AOP Modality Matrix',
         subtitle: 'Power Apps Enterprise Research Governance, DOE Crosscuts & Milestone Tracking',
         description:
           'The comprehensive AOP Project Plan interface engineered to govern federal research initiatives. It unifies project scope, DOE crosscuts, TRL modalities (Modalities 1–9), deliverable schedules, milestone dependencies, and multi-directorate budget allocations within a standardized governance system.',
@@ -345,7 +345,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     challenge:
       'Complex enterprise discovery cycles consumed weeks of manual effort synthesizing hours of stakeholder interviews, regulatory mandates, and dependency trees into technical specifications.',
     solution:
-      'I engineered reusable prompt templates that turn raw interview transcripts into structured user stories, Gherkin acceptance criteria, and architecture comparison matrices—maintaining strict human-in-the-loop validation while cutting initial drafting time in half.',
+      'I engineered reusable prompt templates that turn raw interview transcripts into structured user stories, Gherkin acceptance criteria, and architecture comparison matrices, maintaining strict human-in-the-loop validation while cutting initial drafting time in half.',
     keyOutcomes: [
       'Accelerated initial requirements drafting and user story generation by ~50% without sacrificing rigor',
       'Systematically uncovered hidden edge cases and cross-system dependencies during early discovery',
@@ -374,15 +374,12 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     summary:
       'I lead enterprise IT accessibility and Section 508 governance while directing business analysis across research and enterprise systems.',
     highlights: [
-      'I led end-to-end business analysis for a custom Conflict of Interest (COI) disclosure platform, translating regulatory policies into functional specifications.',
-      'I served as a core BA for the full-SDLC rollout and campus-wide migration to a modernized Learning Management System (LMS) serving 5,000+ users.',
-      'I serve as Product Owner for our enterprise accessibility scanning platform, monitoring and benchmarking laboratory web domains for WCAG 2.2 AA and Section 508 compliance.',
-      'I manage stakeholder requirements, vendor roadmaps, and continuous scanning operations for our digital accessibility tools.',
-      'I help software teams interpret scan diagnostics, converting raw accessibility issues into prioritized user stories with clear remediation steps.',
-      'I embed Section 508 criteria into technology procurement evaluations, design system reviews, and sprint acceptance definitions.',
-      'I serve as product owner / backup product owner for our Figma enterprise platform, establishing accessible design tokens and developer handoff guidelines.',
-      'I apply generative AI prompt workflows to analyze business requirements, map system dependencies, and evaluate vendor alternatives.',
-      'I co-founded and actively lead our Accessibility Champions Employee Resource Group, advancing disability inclusion and assistive tech awareness.',
+      'Accessibility Scanning Platform (Product Owner): Manage vendor roadmaps and recurring automated audits across laboratory web domains. Triage raw scan telemetry into sprint-ready developer backlogs with zero-ambiguity remediation guidelines.',
+      'COI Disclosure Platform: Led business analysis from policy review to deployment for a custom Conflict of Interest platform. Replaced manual email reviews with automated multi-tier approval routing, reducing review turnaround by 45%.',
+      'Enterprise LMS Rollout: Served as core Business Analyst for the institutional migration to a modern LMS for 5,000+ active researchers and staff, enforcing Section 508 conformance on all core training modules.',
+      'Figma Enterprise & Design Tokens: Act as enterprise product owner for design tokens and accessible component handoffs, stopping contrast and keyboard navigation defects before code review.',
+      'Generative AI Specification Workflows: Built repeatable prompt templates to draft Gherkin user stories, map data dependencies, and cross-reference federal policy rules.',
+      'Accessibility Champions ERG: Co-founded the laboratory’s employee resource group, driving assistive tech adoption (screen readers, speech input) across engineering and scientific divisions.',
     ],
     competencies: [
       'Section 508 Compliance',
@@ -406,10 +403,10 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     summary:
       'I progressed through consecutive promotions to lead business analysis for enterprise software rollouts and custom application development across the university research ecosystem.',
     highlights: [
-      'I transformed complex administrative processes into functional requirements, user stories, Gherkin criteria, and BPMN workflow diagrams.',
-      'I planned and led user acceptance testing (UAT), stakeholder validation workshops, and defect triage across academic and administrative departments.',
-      'I served as a strategic liaison connecting university faculty, executive leadership, and technology vendors to ensure on-time system cutovers.',
-      'I earned promotion from IT Business Analyst I to IT Business Analyst II, taking on expanded scope for enterprise-tier integrations and architecture.',
+      'Process & Requirements Architecture: Modeled complex academic and administrative processes into functional specifications, BPMN swimlanes, and testable Gherkin user stories.',
+      'Stakeholder Validation & UAT: Directed user acceptance testing, faculty validation workshops, and defect triage across academic and administrative departments.',
+      'Cross-Functional System Cutovers: Acted as primary liaison connecting university leadership, faculty committees, and technology vendors to ensure zero-downtime cutovers.',
+      'Promotion & Architecture Scope: Advanced from IT Business Analyst I to II, taking on enterprise-tier API integrations and identity management architecture.',
     ],
     competencies: [
       'Requirements Elicitation & Engineering',

@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               {PERSONAL_INFO.name}
             </div>
             <p className="text-slate-400 max-w-md">
-              IT Accessibility & Section 508 Leader · Senior IT Business Analyst
+              IT Accessibility Coordinator & Lead Business Analyst · Section 508 Governance
             </p>
           </div>
 

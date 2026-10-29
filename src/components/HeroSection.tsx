@@ -90,7 +90,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onViewCaseStudies }) =
                       <span>Section 508 & IT Accessibility Leadership</span>
                     </div>
                     <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed ps-5.5">
-                      I own the lab-wide automated scanning platform—evaluating public domains, managing vendor roadmaps, and translating scan diagnostics into prioritized dev backlogs.
+                      I own the lab-wide automated scanning platform, evaluating public domains, managing vendor roadmaps, and translating scan diagnostics into prioritized dev backlogs.
                     </p>
                   </div>
 
@@ -100,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onViewCaseStudies }) =
                       <span>Enterprise Requirements & Architecture</span>
                     </div>
                     <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed ps-5.5">
-                      I translate complex research and operational processes into structured requirements, user stories, and architecture trade-offs—accelerated by custom AI workflows.
+                      I translate complex research and operational processes into structured requirements, user stories, and architecture trade-offs, accelerated by custom AI workflows.
                     </p>
                   </div>
 

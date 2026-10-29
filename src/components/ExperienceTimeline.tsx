@@ -73,12 +73,27 @@ export const ExperienceTimeline: React.FC = () => {
 
               {/* Bulleted Achievements */}
               <div className="mt-5 space-y-3">
-                {exp.highlights.map((bullet, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{bullet}</span>
-                  </div>
-                ))}
+                {exp.highlights.map((bullet, idx) => {
+                  const colonIdx = bullet.indexOf(':');
+                  const hasLeadIn = colonIdx > 0 && colonIdx < 55;
+                  return (
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>
+                        {hasLeadIn ? (
+                          <>
+                            <strong className="font-semibold text-slate-950 dark:text-white">
+                              {bullet.slice(0, colonIdx + 1)}
+                            </strong>
+                            {bullet.slice(colonIdx + 1)}
+                          </>
+                        ) : (
+                          bullet
+                        )}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -195,7 +210,7 @@ export const ExperienceTimeline: React.FC = () => {
                 <span className="font-bold text-blue-900 dark:text-blue-300 block mb-1.5 text-sm">
                   Interdisciplinary Analytical Foundation:
                 </span>
-                The Bush School of Government & Public Service provided advanced training in public policy analysis, quantitative evaluation, governance models, and institutional strategy—directly underpinning my success leading Section 508 compliance and high-stakes enterprise IT systems.
+                The Bush School of Government & Public Service provided advanced training in public policy analysis, quantitative evaluation, governance models, and institutional strategy, directly underpinning my success leading Section 508 compliance and high-stakes enterprise IT systems.
               </div>
             </div>
           </div>

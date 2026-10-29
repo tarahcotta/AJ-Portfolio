@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sliders, Mail, Sun, Moon } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -9,12 +9,88 @@ interface NavbarProps {
   onToggleTheme: () => void;
 }
 
+interface NavSection {
+  id: string;
+  label: string;
+  href: string;
+}
+
+const NAV_ITEMS: NavSection[] = [
+  { id: 'overview', label: 'Overview', href: '#overview' },
+  { id: 'case-studies', label: 'Case Studies', href: '#case-studies' },
+  { id: 'interactive-lab', label: 'Audit & AI Lab', href: '#interactive-lab' },
+  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+];
+
+const ALL_SECTION_IDS = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'case-studies', label: 'Case Studies' },
+  { id: 'interactive-lab', label: 'Audit & AI Lab' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export const Navbar: React.FC<NavbarProps> = ({
   onToggleA11yPanel,
   isA11yPanelOpen,
   theme,
   onToggleTheme,
 }) => {
+  const [activeSection, setActiveSection] = useState<string>('overview');
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        // If at the very top of the page, default to overview
+        if (window.scrollY < 80) {
+          setActiveSection('overview');
+          ticking = false;
+          return;
+        }
+
+        // If user has scrolled to the bottom of the page, highlight contact
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const pageHeight = document.documentElement.scrollHeight;
+        if (pageHeight - scrollPosition <= 80) {
+          setActiveSection('contact');
+          ticking = false;
+          return;
+        }
+
+        // Mid-viewport eye-level offset (around header height + reading focus zone)
+        const checkLine = 160;
+        let matchedSection = 'overview';
+
+        for (const item of ALL_SECTION_IDS) {
+          const el = document.getElementById(item.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            // Section top is above checkLine and section bottom is below checkLine
+            if (rect.top <= checkLine && rect.bottom > checkLine) {
+              matchedSection = item.id;
+              break;
+            }
+          }
+        }
+
+        setActiveSection(matchedSection);
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check on mount
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Skip to main content link for Section 508 / WCAG compliance */}
@@ -35,35 +111,28 @@ export const Navbar: React.FC<NavbarProps> = ({
             {PERSONAL_INFO.name}
           </a>
 
-          {/* Zone 2: Clean single-line text navigation links */}
+          {/* Zone 2: Navigation links with dynamic active states & ARIA current location */}
           <nav
             aria-label="Primary Navigation"
-            className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300"
+            className="hidden lg:flex items-center gap-1 text-sm font-medium"
           >
-            <a
-              href="#overview"
-              className="hover:text-slate-950 dark:hover:text-white transition-colors whitespace-nowrap shrink-0 rounded-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
-            >
-              Overview
-            </a>
-            <a
-              href="#case-studies"
-              className="hover:text-slate-950 dark:hover:text-white transition-colors whitespace-nowrap shrink-0 rounded-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
-            >
-              Case Studies
-            </a>
-            <a
-              href="#interactive-lab"
-              className="hover:text-slate-950 dark:hover:text-white transition-colors whitespace-nowrap shrink-0 rounded-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
-            >
-              Audit & AI Lab
-            </a>
-            <a
-              href="#experience"
-              className="hover:text-slate-950 dark:hover:text-white transition-colors whitespace-nowrap shrink-0 rounded-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
-            >
-              Experience
-            </a>
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  aria-current={isActive ? 'location' : undefined}
+                  className={`px-3 py-1.5 rounded-lg text-sm transition-all whitespace-nowrap shrink-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2 ${
+                    isActive
+                      ? 'text-blue-700 dark:text-blue-400 font-semibold bg-blue-50/90 dark:bg-blue-950/70 border border-blue-200/80 dark:border-blue-800/80 shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white border border-transparent hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Zone 3: Primary Action, Theme & Accessibility Controls */}
@@ -103,7 +172,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Direct Connect Action */}
             <a
               href="#contact"
-              className="px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 dark:bg-blue-600 rounded-lg hover:bg-slate-800 dark:hover:bg-blue-500 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2"
+              aria-current={activeSection === 'contact' ? 'location' : undefined}
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 shadow-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-400 focus-visible:outline-offset-2 ${
+                activeSection === 'contact'
+                  ? 'bg-blue-600 text-white ring-2 ring-blue-500/50 hover:bg-blue-500'
+                  : 'text-white bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500'
+              }`}
             >
               <Mail className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Get in Touch</span>
